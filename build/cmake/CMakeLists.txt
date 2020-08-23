@@ -115,12 +115,16 @@ if (MSVC)
   # add options from visual studio project
   target_compile_definitions (glew PRIVATE "GLEW_BUILD;VC_EXTRALEAN")
   target_compile_definitions (glew_s PRIVATE "GLEW_STATIC;VC_EXTRALEAN")
-  target_link_libraries (glew LINK_PRIVATE -BASE:0x62AA0000)
+  # TODO: Danny 23-08-2020: removed due to this:
+  # https://github.com/nigels-com/glew/issues/99#issuecomment-255427478
+  # target_link_libraries (glew LINK_PRIVATE -BASE:0x62AA0000)
   # kill security checks which are dependent on stdlib
   target_compile_options (glew PRIVATE -GS-)
   target_compile_options (glew_s PRIVATE -GS-)
   # remove stdlib dependency
-  target_link_libraries (glew LINK_PRIVATE -nodefaultlib -noentry)
+  # TODO: Danny 23-08-2020: removed due to this:
+  # https://github.com/nigels-com/glew/issues/99#issuecomment-255427478
+  # target_link_libraries (glew LINK_PRIVATE -nodefaultlib -noentry)
   # TODO: Danny 23-08-2020 solve this for vs2013 and return to original repo: https://github.com/Perlmint/glew-cmake.git
   # target_link_libraries (glew LINK_PRIVATE libvcruntime.lib)
   target_link_libraries (glew LINK_PRIVATE msvcrt.lib )
